@@ -1612,7 +1612,7 @@ static int smbchg_set_high_usb_chg_current(struct smbchg_chip *chip,
 	int i, rc;
 	u8 usb_cur_val;
 
-	if (current_ma == CURRENT_900_MA) {
+	if ((current_ma == CURRENT_500_MA) || (current_ma == CURRENT_900_MA)) {	// AP: Fast charge for USB
 		rc = smbchg_sec_masked_write(chip,
 					chip->usb_chgpth_base + CHGPTH_CFG,
 					CFG_USB_2_3_SEL_BIT, CFG_USB_2);
